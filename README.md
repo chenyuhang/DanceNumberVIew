@@ -13,7 +13,7 @@ README
 xml中使用该view
 ------
 
-### 单行文本
+### 代码实例
     <com.cyh.dancenumberview.DanceNumberView
         android:layout_marginTop="50dp"
         android:id="@+id/activity_main_danceview"
