@@ -1,7 +1,19 @@
-# DanceNumberView
-用于展示滚动数据的View，主体由一个DanceNumberView构成，包含多个子ScrollView，父View控制子View的显示滚动，
-使用方法如下：
-<com.cyh.dancenumberview.DanceNumberView
+README
+===========================
+
+
+用于展示滚动数据的View，主体由一个DanceNumberView构成，包含多个子ScrollView，父View控制子View的显示滚动。
+
+
+	
+|作者|cyh|
+|---|---
+
+xml中使用该view
+------
+
+### 单行文本
+    <com.cyh.dancenumberview.DanceNumberView
         android:layout_marginTop="50dp"
         android:id="@+id/activity_main_danceview"
         android:layout_width="match_parent"
@@ -17,7 +29,5 @@
         app:subTextBackground="@drawable/main_bg_singledance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.cyh.dancenumberview.DanceNumberView>        
-        
-ScrollType
-共有两种"fromCurrent"和"fromZero"分别表示滚动是从当前只到目标值和固定从0开始滚动 
+        app:layout_constraintTop_toTopOf="parent"></com.cyh.dancenumberview.DanceNumberView>    
+scrollType有两种模式"fromCurrent"滚动从当前数字开始,"fromZero"滚动固定从0开始。
