@@ -70,7 +70,7 @@ public class DanceNumberView extends LinearLayout {
                 SingleDanceView scrollNumber = new SingleDanceView(getContext()).setBackGroundRes(textBackground);
                 scrollNumber.setTextPaddingHorizontal(textPaddingHorizontal)
                         .setTextPaddingVertical(textPaddingVertical).setTextColor(textColor).setTextSize(textSize)
-                        .setTargerText(String.valueOf(chars[i]));
+                        .setTargetText(String.valueOf(chars[i]));
                 if (chars_old != null && chars_old_index >= 0) {
                     scrollNumber.setText(String.valueOf(chars_old[chars_old_index]));
                     chars_old_index--;
@@ -103,7 +103,6 @@ public class DanceNumberView extends LinearLayout {
                     addView(tv, 0);
                 }
             }
-            chars_old_index--;
         }
         if (list != null && list.size() > 0) {
             for (int i = 0; i < getChildCount(); i++) {

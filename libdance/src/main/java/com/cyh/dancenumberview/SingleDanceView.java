@@ -21,7 +21,7 @@ public class SingleDanceView extends View {
     //当前显示的文字
     private String mText = "0";
     //文字最终显示
-    private String mtargerText = "";
+    private String mtargetText = "";
     private int mTextColor = Color.BLACK;
     private int mTextSize = 1;
     private int textPaddingHorizontal = 0;
@@ -32,7 +32,7 @@ public class SingleDanceView extends View {
     private Context mContext;
     private static String BASE_NUMBER = "0123456789";
     //总时间
-    private int total_seconds = 15000;
+    private int total_seconds = 15;
     //文字高
     private int textOutHeight;
     //文字宽
@@ -98,12 +98,13 @@ public class SingleDanceView extends View {
         this.textPaddingVertical = textPaddingVertical;
         return this;
     }
-    public SingleDanceView setBackGroundRes(int backGroundRes)
-    {
+
+    public SingleDanceView setBackGroundRes(int backGroundRes) {
         this.backgroundRes = backGroundRes;
         setBackgroundResource(backgroundRes);
         return this;
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
@@ -117,17 +118,17 @@ public class SingleDanceView extends View {
             Rect bounds = new Rect();
             mPaint.getTextBounds("0", 0, "0".length(), bounds);
             textOutWidth = bounds.width();
-            width = textOutWidth +textPaddingHorizontal*2;
+            width = textOutWidth + textPaddingHorizontal * 2;
 
         }
         if (heightMode == MeasureSpec.AT_MOST) {
             Rect bounds = new Rect();
             mPaint.getTextBounds("0", 0, "0".length(), bounds);
             textOutHeight = bounds.height();
-            height = textOutHeight + textPaddingVertical*2;
+            height = textOutHeight + textPaddingVertical * 2;
         }
         //设置宽高
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
 //        textOutHeight = height * 2;
         textOutHeight = height;
     }
@@ -145,7 +146,7 @@ public class SingleDanceView extends View {
         int dy = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
         int baseLine = getHeight() / 2 + dy;
         mPaint.setTextAlign(Paint.Align.CENTER);
-        int length = getCurrentToTargerLength(Integer.parseInt(mText), Integer.parseInt(mtargerText));
+        int length = getCurrentToTargerLength(Integer.parseInt(mText), Integer.parseInt(mtargetText));
         for (int i = Integer.valueOf(mText); i <= Integer.parseInt(mText) + length; i++) {
             mPaint.setTextSize(mTextSize);
             Rect innerBounds = new Rect();
@@ -156,11 +157,9 @@ public class SingleDanceView extends View {
                 drawNum = String.valueOf(i - 10);
             }
             int y = baseLine + (i - Integer.valueOf(mText)) * textOutHeight - scrollY;
-            if(y <= textOutHeight+mTextSize)
-            {
-
-
-            canvas.drawText(drawNum, getWidth() / 2, baseLine + (i - Integer.valueOf(mText)) * textOutHeight - scrollY, mPaint);}
+            if (y <= textOutHeight*2) {
+                canvas.drawText(drawNum, getWidth() / 2, y, mPaint);
+            }
         }
     }
 
@@ -171,7 +170,7 @@ public class SingleDanceView extends View {
             public void run() {
                 int length = 0;
                 try {
-                    length = getCurrentToTargerLength(Integer.parseInt(mText), Integer.parseInt(mtargerText));
+                    length = getCurrentToTargerLength(Integer.parseInt(mText), Integer.parseInt(mtargetText));
 
                 } catch (Exception e) {
                 }
@@ -195,11 +194,15 @@ public class SingleDanceView extends View {
 
     public void start() {
         scrollY = 0;
+        if(mtargetText!= null && mText!= null && mText.equals(mtargetText))
+        {
+            return;
+        }
         if (!StringIsNumber(mText)) {
             mText = "0";
         }
 
-        int length = getCurrentToTargerLength(Integer.parseInt(mText), Integer.parseInt(mtargerText));
+        int length = getCurrentToTargerLength(Integer.parseInt(mText), Integer.parseInt(mtargetText));
         length = length == 0 ? 1 : length;
         animateView(total_seconds / length);
     }
@@ -213,12 +216,12 @@ public class SingleDanceView extends View {
         return true;
     }
 
-    public String getTargerText() {
-        return mtargerText;
+    public String getTargetText() {
+        return mtargetText;
     }
 
-    public void setTargerText(String targerText) {
-        this.mtargerText = targerText;
+    public void setTargetText(String targerText) {
+        this.mtargetText = targerText;
     }
 
     //获取当前数字与目标数字相差多少
