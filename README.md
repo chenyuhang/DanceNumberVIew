@@ -31,4 +31,8 @@ xml中使用该view
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></com.cyh.dancenumberview.DanceNumberView>    
+        
+        danceNumberView.setText("123456");//设置显示的数字
+        danceNumberView.start();//动起来
+        
 scrollType有两种模式"fromCurrent"滚动从当前数字开始,"fromZero"滚动固定从0开始。
