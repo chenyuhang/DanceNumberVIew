@@ -3,9 +3,9 @@ README
 
 
 用于展示滚动数据的View，主体由一个DanceNumberView构成，包含多个子ScrollView，父View控制子View的显示滚动。
-
-
-	
+```
+https://github.com/chenyuhang/DanceNumberView/blob/master/danvace.gif
+```
 |作者|cyh|
 |---|---
 
