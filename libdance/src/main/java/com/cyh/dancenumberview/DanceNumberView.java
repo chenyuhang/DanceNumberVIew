@@ -68,7 +68,7 @@ public class DanceNumberView extends LinearLayout {
             //判断是否是数字
             if (charIsNumber(chars[i])) {
                 SingleDanceView scrollNumber = new SingleDanceView(getContext()).setBackGroundRes(textBackground);
-                scrollNumber.setTextPaddingHorizontal(textPaddingHorizontal).setScrollType(scrollType)
+                scrollNumber.setTextPaddingHorizontal(textPaddingHorizontal)
                         .setTextPaddingVertical(textPaddingVertical).setTextColor(textColor).setTextSize(textSize)
                         .setTargerText(String.valueOf(chars[i]));
                 if (chars_old != null && chars_old_index >= 0) {
