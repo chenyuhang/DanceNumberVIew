@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -31,7 +32,7 @@ public class SingleDanceView extends View {
     private Context mContext;
     private static String BASE_NUMBER = "0123456789";
     //总时间
-    private int total_seconds = 15;
+    private int total_seconds = 15000;
     //文字高
     private int textOutHeight;
     //文字宽
@@ -154,7 +155,12 @@ public class SingleDanceView extends View {
             if (i > 9) {
                 drawNum = String.valueOf(i - 10);
             }
-            canvas.drawText(drawNum, getWidth() / 2, baseLine + (i - Integer.valueOf(mText)) * textOutHeight - scrollY, mPaint);
+            int y = baseLine + (i - Integer.valueOf(mText)) * textOutHeight - scrollY;
+            if(y <= textOutHeight+mTextSize)
+            {
+
+
+            canvas.drawText(drawNum, getWidth() / 2, baseLine + (i - Integer.valueOf(mText)) * textOutHeight - scrollY, mPaint);}
         }
     }
 
