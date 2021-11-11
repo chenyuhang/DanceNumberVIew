@@ -1,6 +1,10 @@
 README
 ===========================
+###
 
+引入方式
+-----
+    implementation 'com.github.chenyuhang:DanceNumberView:0.0.1'
 
 用于展示滚动数据的View，主体由一个DanceNumberView构成，包含多个子ScrollView，父View控制子View的显示滚动。
 
